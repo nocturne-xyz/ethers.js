@@ -6,6 +6,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolveNode from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 
 import sourcemaps from 'rollup-plugin-sourcemaps';
 
@@ -87,6 +88,7 @@ function getUmdConfig() {
         mainFields: [ "browser", "main" ]
     }));
     plugins.push(commonjs({ }));
+    plugins.push(nodePolyfills());
 
     return {
         input: `packages/ethers/lib/index.js`,
